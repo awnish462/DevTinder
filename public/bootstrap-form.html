@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <style>
+      .container {
+        width: 30%;
+        border: 1px solid black;
+        border-radius: 20px;
+        box-shadow: 2px 2px 2px black;
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="text-center">
+          <span class="bi bi-person-circle">Register</span>
+        </div>
+        <form>
+          <div class="mb-2">
+            <label for="userName" class="form-label">UserName</label>
+            <div>
+              <input type="text" name="userName" class="form-control" />
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label for="password" class="form-label">Password</label>
+
+            <div>
+              <input type="text" class="form-control" name="password" />
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label for="city" class="form-label"> City </label>
+            <div>
+              <select name="city" id="" class="form-select">
+                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Amravati">Amaravati</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-2">
+            <label for="age">Age</label>
+            <div>
+              <input type="range" name="age" id="" class="form-range" />
+            </div>
+          </div>
+          <div class="mb-2">
+            <span>
+              <label for="terms&condition" class="form-label"
+                >Terms And Condition</label
+              >
+            </span>
+            <div class="form-switch mb-2">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name="terms&condition"
+                id=""
+              />
+            </div>
+            <div>
+              <input type="button" class="btn btn-primary" value="Accept" />
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <input type="submit" value="Register" class="btn btn-outline-success w-100">
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

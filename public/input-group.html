@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <style>
+      .text-box {
+        background-color: rgb(247, 247, 247);
+      }
+      hr {
+        color: black;
+      }
+      .text-btw-lines {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .text-btw-lines hr {
+        flex-grow: 3;
+        border: none;
+        border-top: 1px solid #b43737;
+      }
+
+      .text-btw-lines span {
+        white-space: nowrap;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .insta-container {
+        margin-top: 20px;
+        width: 30%;
+        padding: 30px;
+      }
+      .login-btn,.signup-btn{
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h2>Amazon Search Bar</h2>
+
+      <div class="input-group">
+        <select name="" id="" class="input-group-text">
+          <option value="">All</option>
+          <option value="">Electronics</option>
+          <option value="">Shirts</option>
+          <option value="">Mobiles</option>
+          <option value="">Tshirts</option>
+        </select>
+        <input type="text" class="form-control" />
+
+        <button class="btn btn-warning">
+          <span class="bi bi-search"></span>
+        </button>
+      </div>
+
+      <h2>Netflix Register</h2>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter your email id"
+        />
+
+        <button class="btn btn-danger">
+          Get Started
+          <span class="bi bi-chevron-right"></span>
+        </button>
+      </div>
+    </div>
+
+    <h2>Instagram Login Page View</h2>
+    <div class="insta-container container">
+        <div class="text-center mb-4">
+            <img src="../public/images/image-removebg-preview.png" width="30%" />
+
+        </div>
+      <div>
+        <input
+          type="text"
+          class="form-control text-box mb-2"
+          placeholder="Phone number,username, or email"
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          class="form-control text-box mb-2"
+          placeholder="Password"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+
+      <div class="text-btw-lines">
+        <hr />
+        <span>Or</span>
+        <hr />
+      </div>
+      <div class="text-center">
+        <span class="bi bi-facebook text-primary"> <a href="#" class="login-btn">Log in with facebook</a></span>
+      </div>
+
+      <div class="text-center">
+        <span>Forgot password?</span>
+      </div>
+
+      <div class="text-center">
+        <span>Don't have a account? <a href="" class="signup-btn">Sign up</a></span> 
+      </div>
+    </div>
+  </body>
+</html>

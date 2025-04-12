@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .q-options {
+        display: flex;
+      }
+      .q-options li {
+        margin-right: 50px;
+      }
+      .breadcrumb {
+        display: flex;
+        list-style: none;
+      }
+      .breadcrumb li {
+        background-color: rgb(21, 86, 142);
+        border-top-right-radius: 20px;
+      }
+      .breadcrumb li::after {
+        content: ">>";
+      }
+      .breadcrumb li:last-child::after {
+        content: "";
+      }
+      .breadcrumb li:last-child {
+        background-color: black;
+        color: white;
+      }
+
+      footer{
+        background-color:#232f3f;
+        height: 300px;
+        color: white;
+        display: grid;
+        grid-template-columns: 4fr 4fr 4fr;
+      }
+      
+      ul li{
+        list-style: none;
+        margin-bottom: 5px;
+      }
+    footer  ul li:first-child{
+        font-size: large;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <ol type="I">
+      <li>
+        Technical Course
+        <ol type="a">
+          <li>
+            Java
+            <ol type="1">
+              <li>Core Java</li>
+              <li>Spring Boot</li>
+              <li>Spring Framework</li>
+              <li>Advance Java</li>
+            </ol>
+          </li>
+          <li>Web Development</li>
+          <li>.Net</li>
+          <li>Python</li>
+        </ol>
+      </li>
+      <li>
+        Government Exam Course
+        <ol type="a">
+          <li>SSB Exam</li>
+          <li>SSC Exam</li>
+          <li>CDS Exam</li>
+          <li>UPSC Exam</li>
+        </ol>
+      </li>
+    </ol>
+
+    <ol type="1">
+      <li>
+        Which of the following is India's national bird?
+        <ol type="a" class="q-options">
+          <li>Tiger</li>
+          <li>Peacock</li>
+          <li>Dolphin</li>
+          <li>Leopard</li>
+        </ol>
+      </li>
+    </ol>
+
+    <ul class="breadcrumb">
+      <li>Shopping</li>
+      <li>Electronics</li>
+      <li>Mobiles</li>
+      <li>Smartphones</li>
+      <li>Cmf by Nothing</li>
+      <li>128gb</li>
+    </ul>
+
+    <footer >
+      <div>
+        <ul>
+          <li>Make Money with Us</li>
+          <li>Sell on Amazon</li>
+          <li>
+            Sell under Amazon Accelerator
+          </li>
+          <li> Protect and Build Your Brand </li>
+          <li>
+            Amazon Global Selling by
+          </li>
+          <li>Supply to Amazon</li>
+          <li> Become an Affiliate  </li>
+          <li>Fulfilment by Amazon</li>
+
+          <li>Amazon Advertise Your Products </li>
+          <li>Amazon Pay on Merchants</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+            <li>Make Money with Us</li>
+          <li>Sell on Amazon</li>
+          <li>
+            Sell under Amazon Accelerator
+          </li>
+          <li> Protect and Build Your Brand </li>
+          <li>
+            Amazon Global Selling by
+          </li>
+          <li>Supply to Amazon</li>
+          <li> Become an Affiliate  </li>
+          <li>Fulfilment by Amazon</li>
+
+          <li>Amazon Advertise Your Products </li>
+          <li>Amazon Pay on Merchants</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+            <li>Make Money with Us</li>
+          <li>Sell on Amazon</li>
+          <li>
+            Sell under Amazon Accelerator
+          </li>
+          <li> Protect and Build Your Brand </li>
+          <li>
+            Amazon Global Selling by
+          </li>
+          <li>Supply to Amazon</li>
+          <li> Become an Affiliate  </li>
+          <li>Fulfilment by Amazon</li>
+
+          <li>Amazon Advertise Your Products </li>
+          <li>Amazon Pay on Merchants</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

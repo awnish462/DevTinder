@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <script type="text/javascript" src="../src/scripts/inox_demo.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <button
+        class="btn btn-success"
+        data-bs-target="#movies"
+        data-bs-toggle="modal"
+      >
+        Show Dialog
+      </button>
+      <div class="modal" id="movies">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Book Ticket</h2>
+              <button
+                type="button"
+                class="btn btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex justify-content-around">
+                <div>
+                  <select class="form-select" id="movie">
+                    <option>Bhootnath</option>
+                    <option>URI</option>
+                    <option>Jurasic Park</option>
+                  </select>
+                </div>
+                <div>
+                  <select class="form-select" id="date">
+                    <option>26 Feb</option>
+                  </select>
+                </div>
+
+                <div>
+                  <select class="form-select" id="time">
+                    <option>03:00 PM ONYX Diner Hindi</option>
+                    <option>06:00 PM ONYX Diner Hindi</option>
+                    <option>09:00 PM ONYX Diner Hindi</option>
+                  </select>
+                </div>
+
+                <div>
+                  <select class="form-select" id="cinema">
+                    <option>PVR: Citi Mall, Andheri (W) Mumbai</option>
+                    <option>
+                      PVR:C&B Square Chakala Andheri E (Formerly Sangam)
+                    </option>
+                    <option>INOX Megaplex, Inorbit Mall,Malad(W) Mumbai</option>
+                  </select>
+                </div>
+
+                <button
+                  class="btn btn-primary"
+                  onclick="onBookClick()"
+                  data-bs-dismiss="modal"
+                  id="btnBook"
+                >
+                  Book
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: none;" id="displaycontent">
+        <dt>Movie</dt>
+        <dd id="lablmovie"></dd>
+
+        <dt>Date</dt>
+        <dd id="labldate"></dd>
+
+        <dt>Cinema Hall</dt>
+        <dd id="lablcinema"></dd>
+
+        <dt>Time</dt>
+        <dd id="labltime"></dd>
+      </div>
+
+      <button class="btn btn-danger" onclick="onEditClick()" data-bs-target="#movies"
+      data-bs-toggle="modal" >Edit</button>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>
