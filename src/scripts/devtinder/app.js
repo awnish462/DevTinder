@@ -2,27 +2,88 @@ const express = require("express");
 const { auth } = require("./midleware");
 const { mongooseConnection } = require("./config/db");
 const User = require("./model/user");
+const validator = require("validator");
 
 const app = express();
 
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
-  const user = new User({
-    firstName: "Aniket",
-    lastName: "Kumar",
-    email: "ankiket@gmail.com",
-    city: "Aurangabad",
-    age: "22",
-    gender: "Male",
-  });
+  const user = new User(req.body);
+
   try {
     await user.save();
     res.status(200).send("User Added Successfully");
   } catch (error) {
-    res.status(400).send("User Not Added Successfully");
+    res.status(400).send(error.message);
   }
 });
+
+app.get("/user", async (req, res) => {
+  try {
+    const data = await User.find({});
+    console.log("data is:-", data);
+    res.status(200).send(data);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Somethind went wrong ");
+  }
+});
+
+app.get("/userById", async (req, res) => {
+  try {
+    const userId = "67ff42060be7d662557b3752";
+    const data = await User.findById(userId);
+    console.log("data is:- ", data);
+    res.status(200).send(data);
+  } catch (error) {
+    console.log("Error is:- ", error.message);
+    res.status(500).send("Data Not found by this id");
+  }
+});
+
+app.patch("/updateUser/:id", async (req, res) => {
+  data=req.body;
+  console.log(data);
+  console.log(req.params.id);
+
+  try {
+    if(!validator.isEmail(data.email)){
+      throw new Error("Email is invalid");
+    }
+  }catch(err){
+    console.log(err.message);
+    res.status(400).send(err.message);
+  }
+  
+  try {
+    const userId = req.params.id;
+
+    
+
+    const data = await User.findByIdAndUpdate(
+      userId,
+      req.body,
+      {
+        returnDocument: "after",
+      }
+    );
+    console.log(data);
+    res.status(200).send(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Something went wrong");
+  }
+});
+
+app.delete("/deleteUser",async(req,res)=>{
+  try{
+    await User.deleteOne({firstName:'Aniket'});
+    res.status(200).send("data deleted successfully")
+  }catch(err){
+    res.status(500).send("Data not found with this id")
+  }
+})
 
 mongooseConnection()
   .then(() => {
