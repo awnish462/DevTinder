@@ -3,18 +3,57 @@ const { auth } = require("./midleware");
 const { mongooseConnection } = require("./config/db");
 const User = require("./model/user");
 const validator = require("validator");
+const signUpValidator = require("../devtinder/utils/signupValidator");
+const bcrypt = require("bcrypt");
 
 const app = express();
 
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
-  const user = new User(req.body);
-
   try {
+    const { firstName, lastName, email, password } = req.body;
+
+    signUpValidator(req);
+
+    const hashPassword = await bcrypt.hash(password, 10);
+
+    const user = new User({
+      firstName,
+      lastName,
+      email,
+      password: hashPassword,
+    });
+
     await user.save();
     res.status(200).send("User Added Successfully");
   } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if(!email || !password){
+      throw new Error("Email or password is required");
+    }
+    const user = await User.findOne({email});
+
+    if(!user){
+      throw new Error("Invalid Credentials");
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if(!isMatch){
+      throw new Error("Invalid Credentials");
+    }else{
+      res.status(200).send("Login Successfull");
+    }
+
+  }catch (error) {
     res.status(400).send(error.message);
   }
 });
@@ -43,31 +82,25 @@ app.get("/userById", async (req, res) => {
 });
 
 app.patch("/updateUser/:id", async (req, res) => {
-  data=req.body;
+  data = req.body;
   console.log(data);
   console.log(req.params.id);
 
   try {
-    if(!validator.isEmail(data.email)){
+    if (!validator.isEmail(data.email)) {
       throw new Error("Email is invalid");
     }
-  }catch(err){
+  } catch (err) {
     console.log(err.message);
     res.status(400).send(err.message);
   }
-  
+
   try {
     const userId = req.params.id;
 
-    
-
-    const data = await User.findByIdAndUpdate(
-      userId,
-      req.body,
-      {
-        returnDocument: "after",
-      }
-    );
+    const data = await User.findByIdAndUpdate(userId, req.body, {
+      returnDocument: "after",
+    });
     console.log(data);
     res.status(200).send(data);
   } catch (err) {
@@ -76,14 +109,14 @@ app.patch("/updateUser/:id", async (req, res) => {
   }
 });
 
-app.delete("/deleteUser",async(req,res)=>{
-  try{
-    await User.deleteOne({firstName:'Aniket'});
-    res.status(200).send("data deleted successfully")
-  }catch(err){
-    res.status(500).send("Data not found with this id")
+app.delete("/deleteUser", async (req, res) => {
+  try {
+    await User.deleteOne({ firstName: "Aniket" });
+    res.status(200).send("data deleted successfully");
+  } catch (err) {
+    res.status(500).send("Data not found with this id");
   }
-})
+});
 
 mongooseConnection()
   .then(() => {
