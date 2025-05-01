@@ -5,10 +5,13 @@ const User = require("./model/user");
 const validator = require("validator");
 const signUpValidator = require("../devtinder/utils/signupValidator");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.post("/signup", async (req, res) => {
   try {
@@ -50,13 +53,25 @@ app.post("/login", async (req, res) => {
     if(!isMatch){
       throw new Error("Invalid Credentials");
     }else{
+      var token = jwt.sign({_id:user._id }, 'Devtinder@#$123');
+      res.cookie("jwt",token);
       res.status(200).send("Login Successfull");
-    }
 
+    }
   }catch (error) {
     res.status(400).send(error.message);
   }
 });
+
+app.get("/getProfile",async (req,res)=>{
+  console.log(req.cookies);
+  const token = req.cookies.jwt;
+ const jwtToken= jwt.verify(token,"Devtinder@#$123");
+ console.log("JWT token is:- "+JSON.stringify(jwtToken));
+ const userId = jwtToken._id;
+ const profile=await User.findById(userId);
+  res.status(200).send(profile);
+})
 
 app.get("/user", async (req, res) => {
   try {
