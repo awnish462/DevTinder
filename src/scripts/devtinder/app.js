@@ -6,7 +6,7 @@ const validator = require("validator");
 const signUpValidator = require("../devtinder/utils/signupValidator");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
+
 
 const app = express();
 
@@ -48,12 +48,12 @@ app.post("/login", async (req, res) => {
       throw new Error("Invalid Credentials");
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await user.verifyPassword(password);
 
     if(!isMatch){
       throw new Error("Invalid Credentials");
     }else{
-      var token = jwt.sign({_id:user._id }, 'Devtinder@#$123',{expiresIn:"1h"});
+      var token = await user.getJWT();
       res.cookie("jwt",token);
       res.status(200).send("Login Successfull");
 

@@ -1,4 +1,3 @@
-
 signUpValidator = function(req) {
     const {firstName, lastName, email, password} = req.body;
 
