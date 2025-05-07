@@ -54,6 +54,13 @@ const userSchema = new mongoose.Schema(
         }
       },
     },
+    about:{
+      type:String,
+      trim:true,
+      minlength:10,
+      maxlength:50,
+      default:"Hey there I am using Devtinder"
+    }
   },
   { timestamps: true }
 );
